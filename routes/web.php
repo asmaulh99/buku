@@ -14,5 +14,26 @@
 */
 
 $router->get('/', function () use ($router) {
-    return $router->app->version();
+    return response()->json(["message"=>"API Buku"]);
+});
+$router->group(['prefix'=> 'api/v1/kategori'], function() use ($router){
+    $router->get('/', ['uses'=>'KategoriController@index']);
+    $router->get('/{id}', ['uses'=>'KategoriController@show']);
+    $router->post('/', ['uses'=>'KategoriController@store']);
+    $router->put('/{id}', ['uses'=>'KategoriController@update']);
+    $router->delete('/', ['uses'=>'KategoriController@destroy']);
+});
+$router->group(['prefix'=> 'api/v1/buku'], function() use ($router){
+    $router->get('/', ['uses'=>'BukuController@index']);
+    $router->get('/{id}', ['uses'=>'BukuController@show']);
+    $router->post('/', ['uses'=>'BukuController@store']);
+    $router->put('/{id}', ['uses'=>'BukuController@update']);
+    $router->delete('/', ['uses'=>'BukuController@destroy']);
+});
+$router->group(['prefix'=> 'api/v1/penerbit'], function() use ($router){
+    $router->get('/', ['uses'=>'PenerbitController@index']);
+    $router->get('/{id}', ['uses'=>'PenerbitController@show']);
+    $router->post('/', ['uses'=>'PenerbitController@store']);
+    $router->put('/{id}', ['uses'=>'PenerbitController@update']);
+    $router->post('/', ['uses'=>'PenerbitController@destroy']);
 });
