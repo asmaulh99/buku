@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Buku;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class BukuController extends Controller
 {
@@ -14,7 +15,10 @@ class BukuController extends Controller
      */
     public function index()
     {
-        //
+        $data = DB::table('bukus')->select('id_buku','kategori', 'penerbit', 'judul', 'penulis', 'gambar')
+        ->join('kategoris', 'bukus.id_kategori','=','kategoris.id_kategori')
+        ->join('penerbits', 'bukus.id_penerbit','=','penerbits.id_penerbit')->get();
+        return response()->json($data);
     }
 
     /**
@@ -44,9 +48,12 @@ class BukuController extends Controller
      * @param  \App\Models\Buku  $buku
      * @return \Illuminate\Http\Response
      */
-    public function show(Buku $buku)
+    public function show($id)
     {
-        //
+        $data=DB::table('bukus')->select('id_buku','kategori', 'penerbit', 'judul', 'penulis', 'gambar')
+        ->join('kategoris', 'bukus.id_kategori','=','kategoris.id_kategori')
+        ->join('penerbits', 'bukus.id_penerbit','=','penerbits.id_penerbit')->where('id_buku', $id)->get();
+        return response()->json($data);
     }
 
     /**
@@ -55,9 +62,9 @@ class BukuController extends Controller
      * @param  \App\Models\Buku  $buku
      * @return \Illuminate\Http\Response
      */
-    public function edit(Buku $buku)
+    public function edit(Request $request)
     {
-        //
+        
     }
 
     /**

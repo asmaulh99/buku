@@ -14,7 +14,8 @@ class KategoriController extends Controller
      */
     public function index()
     {
-        return response()->json(["msg"=>"halaman index"]);
+        $data = Kategori::all();
+        return response()->json($data);
     }
 
     /**
@@ -35,7 +36,13 @@ class KategoriController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        // $data=[
+        //     'id_kategori' => null,
+        //     'kategori' => $request->kategori
+        //     ''
+        // ];
+        Kategori::create($request->all());
+        return response()->json(['message' => 'Data berhasil ditambahkan']);
     }
 
     /**

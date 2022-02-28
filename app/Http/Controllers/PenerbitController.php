@@ -14,7 +14,8 @@ class PenerbitController extends Controller
      */
     public function index()
     {
-        //
+        $data = Penerbit::all();
+        return response()->json($data);
     }
 
     /**

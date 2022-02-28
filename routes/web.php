@@ -20,20 +20,20 @@ $router->group(['prefix'=> 'api/v1/kategori'], function() use ($router){
     $router->get('/', ['uses'=>'KategoriController@index']);
     $router->get('/{id}', ['uses'=>'KategoriController@show']);
     $router->post('/', ['uses'=>'KategoriController@store']);
-    $router->put('/{id}', ['uses'=>'KategoriController@update']);
+    $router->put('/{id}', ['uses'=>'KategoriController@edit']);
     $router->delete('/', ['uses'=>'KategoriController@destroy']);
 });
 $router->group(['prefix'=> 'api/v1/buku'], function() use ($router){
     $router->get('/', ['uses'=>'BukuController@index']);
     $router->get('/{id}', ['uses'=>'BukuController@show']);
     $router->post('/', ['uses'=>'BukuController@store']);
-    $router->put('/{id}', ['uses'=>'BukuController@update']);
+    $router->put('/{id}', ['uses'=>'BukuController@edit']);
     $router->delete('/', ['uses'=>'BukuController@destroy']);
 });
 $router->group(['prefix'=> 'api/v1/penerbit'], function() use ($router){
     $router->get('/', ['uses'=>'PenerbitController@index']);
     $router->get('/{id}', ['uses'=>'PenerbitController@show']);
     $router->post('/', ['uses'=>'PenerbitController@store']);
-    $router->put('/{id}', ['uses'=>'PenerbitController@update']);
+    $router->put('/{id}', ['uses'=>'PenerbitController@edit']);
     $router->post('/', ['uses'=>'PenerbitController@destroy']);
 });
